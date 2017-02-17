@@ -60,7 +60,7 @@ func (t *KycChaincode) InsertKycDetails(stub shim.ChaincodeStubInterface, args [
 	var KYCObj KycData
 
 	if len(args) != 4 {
-		return nil, errors.New("Incorrect number of arguments. Need 3 arguments")
+		return nil, errors.New("Incorrect number of arguments. Need 4 arguments")
 	}
 
 	// Initialize the chaincode
@@ -96,7 +96,7 @@ func (t *KycChaincode) UpdateKycDetails(stub shim.ChaincodeStubInterface, args [
 
 	jsonAsBytes, err := stub.GetState(WorldState)
 	if err != nil {
-		return nil, errors.New("Failed to get consumer Transactions")
+		return nil, errors.New("Failed to get Consumer's KYC record.")
 	}
 	json.Unmarshal(jsonAsBytes, &KYCDetails)
 
